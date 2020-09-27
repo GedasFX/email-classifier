@@ -1,11 +1,11 @@
 import bayes from "bayes";
 import { simpleParser } from "mailparser";
-import fs from "fs";
+import { readdir, readFile } from "fs";
 import path from "path";
 import { promisify } from "util";
 
-const readDir = promisify(fs.readdir);
-const readFile = promisify(fs.readFile);
+const readDirAsync = promisify(readdir);
+const readFileAsync = promisify(readFile);
 
 export async function trainClassifier(
   ...dataSources: {
@@ -17,11 +17,11 @@ export async function trainClassifier(
 
   for (const { dirPath, category } of dataSources) {
     try {
-      const files = await readDir(dirPath);
+      const files = await readDirAsync(dirPath);
       for (const fileName of files) {
         const filePath = path.join(dirPath, fileName);
         try {
-          const file = await readFile(filePath);
+          const file = await readFileAsync(filePath);
           const email = await parseEmail(file);
 
           // If text failed to parse, ignore.
