@@ -6,12 +6,16 @@
   "scripts": {
     "start": "npm-run-all --parallel watch:server watch:build",
     "watch:server": "nodemon \"./dist/index.js\" --watch \"./dist\" ",
-    "watch:build": "webpack --watch",
+    "watch:build": "webpack --watch --mode development",
     "build": "webpack"
   },
   "license": "MIT",
   "dependencies": {
-    "bayes": "^1.0.0"
+    "@types/mailparser": "^2.7.3",
+    "@types/node": "^14.11.2",
+    "bayes": "^1.0.0",
+    "commander": "^6.1.0",
+    "mailparser": "^3.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.4",

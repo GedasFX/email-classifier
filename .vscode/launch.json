@@ -4,11 +4,10 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "typescript-babel-webpack-starter",
+      "name": "email-classifier",
       "program": "${workspaceRoot}/src/index.ts",
       "stopOnEntry": false,
-      "restart": true,
-      "args": [],
+      "args": ["train-filter", "./training-data/ham", "./training-data/spam"],
       "cwd": "${workspaceRoot}",
       "runtimeExecutable": null,
       "runtimeArgs": ["--nolazy"],

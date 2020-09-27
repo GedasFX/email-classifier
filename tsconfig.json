@@ -3,6 +3,7 @@
     "target": "es5",
     "module": "commonjs",
     "lib": ["ES2015", "WebWorker"],
+    "typeRoots": ["./types", "./node_modules/@types"],
     "allowJs": true,
     "sourceMap": true,
     "outDir": "dist",
@@ -11,5 +12,6 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
-  }
+  },
+  "exclude": ["node_modules", "types"]
 }
