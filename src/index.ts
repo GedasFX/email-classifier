@@ -1,5 +1,5 @@
-// import bayes from "bayes";
-// import { BayesClassifier } from 'natural'
+// @ts-ignore
+import bayes from "bayes";
 
-// const classifier = new BayesClassifier();
-console.log('classifier hello ?? ??');
+const classifier = bayes();
+console.log(classifier);
