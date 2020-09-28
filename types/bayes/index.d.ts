@@ -1,15 +1,19 @@
 declare module "bayes" {
-  declare class Classifier {
+  declare class NaiveBayes {
     constructor(options: { tokenizer: (text: string) => string[] });
 
     learn(data: string, category: string): Promise<void>;
     categorize(data: string): Promise<string>;
 
+    initializeCategory(categoryName: string): this;
+    tokenProbability(token: string, category: string): number;
+    frequencyTable(tokens: string[]): { [token: string]: number };
+
     toJson(): string;
   }
 
-  const c: (() => Classifier) & {
-    fromJson(jsonStr: string): Classifier;
-  };
-  export default c;
+  export function fromJson(jsonStr: string): NaiveBayes;
+
+  const bayes: () => NaiveBayes;
+  export default bayes;
 }

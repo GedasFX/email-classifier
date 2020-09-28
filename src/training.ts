@@ -25,9 +25,8 @@ export async function trainClassifier(
           const email = await parseEmail(file);
 
           // If text failed to parse, ignore.
-          const text = email.text ?? email.html;
-          if (text) {
-            await classifier.learn(text, category);
+          if (email.text) {
+            await classifier.learn(email.text, category);
           }
         } catch (e) {
           console.error(e);
