@@ -46,12 +46,32 @@ To categorize emails to their own categories, manual filtering is needed. A smal
 
 The emails were trained on only the contents of the document. For better filtering and classification, the headers need to be checked, the from email address needs to be verified, in case its typed like go0gle.com, extra consideration needs to be taken for href parts of "a" tags in html code, inclusion of special characters, sender IP address and many more.
 
-##### Usage
+## Usage
 
 To use the algorithm, a NodeJS environment is needed. The program itself is launched with the command `node classfier.js`. Then the program expects one of 3 arguments for training the filter, training the categorizer, or classifying the file. The model trainers output a file in the current directory for usage in the classifier.
 
+##### Installation
+
+Download latest `classifier.zip` file from the repository.
+
+##### Running
+
+Typing `node .` or `node ./index.js` will write all of the usable commands:
+
+1. train-filter <ham_folder> <spam_folder> 
+   // Trains the filter based on the emails provided in the ham and spam folders.
+2. train-categorizer <positive_folder> <negative_folder> <phishing_folder> <other_folder> 
+   // Trains the spam categorizer based on the categorized scam emails.
+3. classify <file_to_classify> [classifier_rules] [categorizer_rules] 
+   // Classifies the given file. If rule file was not provided, the one in current directory will be used instead.
+
 ###### Example
 
+To classify an email (`.eml`), the following command must be used:
 Input: `node . classify ./emails/scam_email_01.eml ./classifier.json ./categorizer.json`.
 Output: `'phishing'`.
+
+The `classifier.json` and `categorizer.json` can be found in the repository release, or can be trained manually using the `train-filter` and `train-categorizer` commands. For those commands, a paths to training data are required. Example:
+Input: `node . train-filter ./training/ham/ ./training/spam/`.
+Output: `classifier.json` in the current directory.
 
